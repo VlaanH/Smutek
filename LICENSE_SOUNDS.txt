@@ -1,0 +1,15 @@
+SMUTEK — Sounds
+
+
+This project uses the following sounds:
+
+
+1. CC0 / Public Domain Sounds
+- These sounds can be freely used, modified, and redistributed.
+- No attribution is required.
+
+
+2. Original Sounds by VlanH
+- Copyright belongs to VlanH.
+- Attribution is required.
+- Can be freely used, modified, and redistributed, as long as proper credit is given to VlanH.

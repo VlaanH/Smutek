@@ -1,0 +1,20 @@
+SMUTEK — Code and Scenes
+
+
+Copyright (c) [2025] VlanH
+
+
+This project is licensed under the GNU General Public License v3 (GPLv3).
+
+
+You may:
+- Use, modify, and distribute the code and scenes.
+- Use the project for both non-commercial and commercial purposes, as long as GPL v3 conditions are followed.
+
+
+You may not:
+- Remove copyright notices.
+- Use this code without keeping the GPL v3 license in derivative works.
+
+
+Full license text: https://www.gnu.org/licenses/gpl-3.0.txt
