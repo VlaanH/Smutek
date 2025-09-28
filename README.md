@@ -1,6 +1,5 @@
-# SMUTEK
-
-
+# 🎮 Smutek
+  Smutek is an indie demo that immerses players in the atmosphere of post-Soviet realities. Explore gray streets, encounter the slow rhythm of everyday life, strange meetings, and hidden melancholy. Combining exploration, interactive storytelling, and quiet philosophy, the game invites reflection on memory, loss, and small joys in a world that has long lost its vibrant colors.
 Licenses and copyright for the project:
 
 
@@ -20,7 +19,8 @@ Licenses and copyright for the project:
 This README clarifies the authorship of all components.
 
 
-# SMUTEK
+# 🎮 Smutek
+Smutek — инди-демо, погружающее игрока в атмосферу постсоветских реалий. Исследуйте серые улицы, сталкивайтесь с тягучей рутиной, странными встречами и скрытой меланхолией повседневной жизни. Игра сочетает в себе элементы исследования, интерактивного повествования и тихой философии, заставляя задуматься о памяти, потерях и маленьких радостях в мире, который давно потерял яркие краски.
 
 
 Лицензии и авторские права проекта:
@@ -38,6 +38,35 @@ This README clarifies the authorship of all components.
 
     2. **Chair and Armchair** — автор: Pro Assets  
        [Ссылка на Asset Store](https://assetstore.unity.com/packages/3d/props/furniture/chair-and-armchair-26360)
+
+
+## 📸 Screenshots
+<table>
+  <tr>
+    <td align="center">
+      <img src="Screenshots/scene1.png" width="400px" alt="Post-Soviet Street"/>
+      <br/>
+      <sub><b>🏙️ Post-Soviet Streets<br/>Постсоветские улицы</b></sub>
+    </td>
+    <td align="center">
+      <img src="Screenshots/scene2.png" width="400px" alt="Courtyard Scene"/>
+      <br/>
+      <sub><b>🏘️ Entrance of a Soviet house<br/>Подъезд Постсоветские дома</b></sub>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="Screenshots/scene3.png" width="400px" alt="Interior Environment"/>
+      <br/>
+      <sub><b>🏠 Kitchen<br/>Кухня</b></sub>
+    </td>
+    <td align="center">
+      <img src="Screenshots/scene4.png" width="400px" alt="Character Interaction"/>
+      <br/>
+      <sub><b>👥 Funeral<br/>Похороны </b></sub>
+    </td>
+  </tr>
+</table>
 
 
 Этот README разъясняет авторство всех компонентов проекта.
