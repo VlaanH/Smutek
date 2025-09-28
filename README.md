@@ -1,6 +1,11 @@
 # 🎮 Smutek
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
+
+[![Download for Linux](https://img.shields.io/badge/⬇%20Download-Linux-2ea44f?style=for-the-badge&logo=linux)](https://github.com/VlaanH/Smutek/releases/download/release/LInux64.tar)
+[![Download for Windows](https://img.shields.io/badge/⬇%20Download-Windows-0078D6?style=for-the-badge&logo=windows)](https://github.com/VlaanH/Smutek/releases/download/release/WIN64.zip)
+
+
 Smutek is an indie demo that immerses players in the atmosphere of post-Soviet realities. Explore gray streets, encounter the slow rhythm of everyday life, strange meetings, and hidden melancholy. Combining exploration, interactive storytelling, and quiet philosophy, the game invites reflection on memory, loss, and small joys in a world that has long lost its vibrant colors.
 Licenses and copyright for the project:
 
