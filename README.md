@@ -1,6 +1,10 @@
 # 🎮 Smutek
-  Smutek is an indie demo that immerses players in the atmosphere of post-Soviet realities. Explore gray streets, encounter the slow rhythm of everyday life, strange meetings, and hidden melancholy. Combining exploration, interactive storytelling, and quiet philosophy, the game invites reflection on memory, loss, and small joys in a world that has long lost its vibrant colors.
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+
+Smutek is an indie demo that immerses players in the atmosphere of post-Soviet realities. Explore gray streets, encounter the slow rhythm of everyday life, strange meetings, and hidden melancholy. Combining exploration, interactive storytelling, and quiet philosophy, the game invites reflection on memory, loss, and small joys in a world that has long lost its vibrant colors.
 Licenses and copyright for the project:
+
+
 
 
 - Code and Scenes: GPL v3 — original code and scenes belong to VlanH.
