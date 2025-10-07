@@ -1,46 +1,47 @@
 # 🎮 Smutek
-  Smutek is an indie demo that immerses players in the atmosphere of post-Soviet realities. Explore gray streets, encounter the slow rhythm of everyday life, strange meetings, and hidden melancholy. Combining exploration, interactive storytelling, and quiet philosophy, the game invites reflection on memory, loss, and small joys in a world that has long lost its vibrant colors.
-Licenses and copyright for the project:
 
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
-- Code and Scenes: GPL v3 — original code and scenes belong to VlanH.
-- Music: Created using Suno AI Free Plan — non-commercial use only, rights belong to Suno AI.
-- Images: Collaborative work by VlanH, animrok, and фишкобирлик.
-- Sounds: CC0 / Public Domain sounds, and original sounds by VlanH (attribution required).
-- Unity Assets: the following assets from Unity Asset Store are used. All rights belong to the asset authors:
+[![Download for Linux](https://img.shields.io/badge/⬇%20Download-Linux-2ea44f?style=for-the-badge\&logo=linux)](https://github.com/VlaanH/Smutek/releases/download/release/LInux64.tar)
+[![Download for Windows](https://img.shields.io/badge/⬇%20Download-Windows-0078D6?style=for-the-badge\&logo=windows)](https://github.com/VlaanH/Smutek/releases/download/release/WIN64.zip)
 
-    1. **Conifers (BoTD)** — Author: Ben B.  
-       [Asset Store link](https://assetstore.unity.com/packages/3d/vegetation/trees/conifers-botd-142076)
+## 📖 About the Project
 
-    2. **Chair and Armchair** — Author: Pro Assets  
-       [Asset Store link](https://assetstore.unity.com/packages/3d/props/furniture/chair-and-armchair-26360)
+**Smutek** is an indie demo immersing players in the atmosphere of post-Soviet realities.
+Explore gray streets, face the slow rhythm of everyday life, encounter strange meetings, and feel the hidden melancholy behind ordinary routines.
 
+Blending **exploration**, **interactive storytelling**, and **quiet philosophy**, the game reflects on **memory, loss, and small joys** in a world that has long lost its vibrant colors.
 
-This README clarifies the authorship of all components.
+---
 
+## 🚀 Quick Start
 
-# 🎮 Smutek
-Smutek — инди-демо, погружающее игрока в атмосферу постсоветских реалий. Исследуйте серые улицы, сталкивайтесь с тягучей рутиной, странными встречами и скрытой меланхолией повседневной жизни. Игра сочетает в себе элементы исследования, интерактивного повествования и тихой философии, заставляя задуматься о памяти, потерях и маленьких радостях в мире, который давно потерял яркие краски.
+1. Download the latest build for your platform:
 
+   * [⬇ Linux](https://github.com/VlaanH/Smutek/releases/download/release/LInux64.tar)
+   * [⬇ Windows](https://github.com/VlaanH/Smutek/releases/download/release/WIN64.zip)
 
-Лицензии и авторские права проекта:
+2. Unpack the archive.
 
+3. Run the executable and start exploring.
 
-- Код и сцены: GPL v3 — оригинальный код и сцены принадлежат VlanH.
-- Музыка: Создана с помощью Suno AI Free Plan — только некоммерческое использование, права принадлежат Suno AI.
-- Изображения: совместное авторство VlanH, animrok и фишкобирлик.
-- Звуки: CC0 / Public Domain и собственные звуки VlanH (требуется указание авторства).
+---
 
-- Ассеты Unity: использованы следующие ассеты из Unity Asset Store. Все права принадлежат авторам ассетов:
+## 📜 Licenses & Credits
 
-    1. **Conifers (BoTD)** — автор: Ben B.  
-       [Ссылка на Asset Store](https://assetstore.unity.com/packages/3d/vegetation/trees/conifers-botd-142076)
+* **Code & Scenes**: GPL v3 — original by **VlanH**.
+* **Music**: Created with *Suno AI Free Plan* — non-commercial use only, rights belong to Suno AI.
+* **Images**: Collaborative work of **VlanH**, **animrok**, and **фишкобирлик**.
+* **Sounds**: CC0 / Public Domain, plus original sounds by **VlanH** (*attribution required*).
+* **Unity Assets**:
 
-    2. **Chair and Armchair** — автор: Pro Assets  
-       [Ссылка на Asset Store](https://assetstore.unity.com/packages/3d/props/furniture/chair-and-armchair-26360)
+  1. [Conifers (BoTD)](https://assetstore.unity.com/packages/3d/vegetation/trees/conifers-botd-142076) — Author: *Ben B.*
+  2. [Chair and Armchair](https://assetstore.unity.com/packages/3d/props/furniture/chair-and-armchair-26360) — Author: *Pro Assets*
 
+---
 
 ## 📸 Screenshots
+
 <table>
   <tr>
     <td align="center">
@@ -51,7 +52,7 @@ Smutek — инди-демо, погружающее игрока в атмос�
     <td align="center">
       <img src="Screenshots/scene2.png" width="400px" alt="Courtyard Scene"/>
       <br/>
-      <sub><b>🏘️ Entrance of a Soviet house<br/>Подъезд Постсоветские дома</b></sub>
+      <sub><b>🏘️ Soviet Courtyard Entrance<br/>Подъезд советского дома</b></sub>
     </td>
   </tr>
   <tr>
@@ -63,11 +64,32 @@ Smutek — инди-демо, погружающее игрока в атмос�
     <td align="center">
       <img src="Screenshots/scene4.png" width="400px" alt="Character Interaction"/>
       <br/>
-      <sub><b>👥 Funeral<br/>Похороны </b></sub>
+      <sub><b>👥 Funeral<br/>Похороны</b></sub>
     </td>
   </tr>
 </table>
 
+---
 
-Этот README разъясняет авторство всех компонентов проекта.
+## 🇷🇺 О проекте
+
+**Smutek** — инди-демо, погружающее игрока в атмосферу постсоветских реалий.
+Исследуйте серые улицы, сталкивайтесь с тягучей рутиной, странными встречами и скрытой меланхолией.
+
+Игра сочетает в себе **исследование**, **интерактивное повествование** и **тихую философию**, заставляя задуматься о **памяти, потерях и маленьких радостях** в мире, где давно погасли яркие краски.
+
+---
+
+## 📜 Лицензии и авторство
+
+* **Код и сцены**: GPL v3 — оригинал от **VlanH**.
+* **Музыка**: создана с помощью *Suno AI Free Plan* — только некоммерческое использование, права принадлежат Suno AI.
+* **Изображения**: совместная работа **VlanH**, **animrok** и **фишкобирлик**.
+* **Звуки**: CC0 / Public Domain и оригинальные звуки **VlanH** (*необходимо указание авторства*).
+* **Ассеты Unity**:
+
+  1. [Conifers (BoTD)](https://assetstore.unity.com/packages/3d/vegetation/trees/conifers-botd-142076) — автор *Ben B.*
+  2. [Chair and Armchair](https://assetstore.unity.com/packages/3d/props/furniture/chair-and-armchair-26360) — автор *Pro Assets*
+
+---
 
