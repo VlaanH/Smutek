@@ -4973,7 +4973,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 1
     m_MaxSize: 40
-    m_Alignment: 1
+    m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -7375,7 +7375,7 @@ Transform:
   - {fileID: 1245644992}
   - {fileID: 2050340940}
   m_Father: {fileID: 317222408}
-  m_RootOrder: 9
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &99878884
 GameObject:
@@ -15871,15 +15871,15 @@ Transform:
   - {fileID: 1855530526}
   - {fileID: 164269103}
   - {fileID: 617042814}
+  - {fileID: 97712522}
   - {fileID: 856267285}
   - {fileID: 832962087}
   - {fileID: 1781537117}
   - {fileID: 1024410183}
   - {fileID: 2077279704}
   - {fileID: 1231133257}
-  - {fileID: 97712522}
-  - {fileID: 861968681}
   - {fileID: 1580492621}
+  - {fileID: 861968681}
   m_Father: {fileID: 0}
   m_RootOrder: 34
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -93781,7 +93781,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 1
     m_MaxSize: 40
-    m_Alignment: 1
+    m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
