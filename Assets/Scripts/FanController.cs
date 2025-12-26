@@ -34,7 +34,7 @@ public class FanController : MonoBehaviour
     public void HardStop()
     {
         isStopping = true;
-        fan.velocity = Vector3.zero;
+        fan.linearVelocity = Vector3.zero;
     }
 
     public IEnumerator SlowDownFan()

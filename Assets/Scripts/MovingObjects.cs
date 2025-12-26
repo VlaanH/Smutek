@@ -46,8 +46,8 @@ public class MovingObjects : MonoBehaviour
         
         taked = false;
         
-        rb.drag = 0;
-        rb.velocity = Vector3.zero;
+        rb.linearDamping = 0;
+        rb.linearVelocity = Vector3.zero;
 
         upAndDownValue = 0;
         
@@ -186,7 +186,7 @@ public class MovingObjects : MonoBehaviour
                 
                 rb.MovePosition(normalPositin);
                 
-                rb.drag = 5;
+                rb.linearDamping = 5;
 
                 if (useAForce==false)
                 {

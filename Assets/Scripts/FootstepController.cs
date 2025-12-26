@@ -29,7 +29,7 @@ public class FootstepController : MonoBehaviour
 
     void Update()
     {
-        if (rb != null && rb.velocity.magnitude > moveThreshold)
+        if (rb != null && rb.linearVelocity.magnitude > moveThreshold)
         {
             stepTimer -= Time.deltaTime;
             if (stepTimer <= 0f)

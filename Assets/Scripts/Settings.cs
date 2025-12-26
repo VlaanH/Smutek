@@ -8,7 +8,10 @@ using UnityEngine.UI;
 
 public class Settings : MonoBehaviour
 {
-    public class KeySettings
+    
+    public List<string> vSyncOptionSelectors;
+    
+    public class GameSettingsObject
     {
         public KeyCode JumpKeyCode;
         
@@ -27,15 +30,16 @@ public class Settings : MonoBehaviour
         public KeyCode SprintKeyCode;
 
         public KeyCode TaskBoxHid;
+
+        public int vSync = 0;
     }
 
     public List<Text> keyTexts = new List<Text>();
-
-    public KeySettings _keySettingsBuffer = new KeySettings();
-   
+    
+    public GameSettingsObject _keySettingsBuffer = new GameSettingsObject();
     
 
-    public static KeySettings SelectedSettings  = new KeySettings()
+    public static GameSettingsObject SelectedSettings  = new GameSettingsObject()
     {
         JumpKeyCode = KeyCode.Space,
         
@@ -58,7 +62,7 @@ public class Settings : MonoBehaviour
 
    
 
-    public void SaveSettings(KeySettings keySettings)
+    public void SaveSettings(GameSettingsObject keySettings)
     {
         string applicationSettingsPatch = Application.persistentDataPath+"/"+"settings.json";
         
@@ -68,13 +72,13 @@ public class Settings : MonoBehaviour
 
     }
     
-    public KeySettings ReadSettings()
+    public GameSettingsObject ReadSettings()
     {
         string applicationSettingsPatch = Application.persistentDataPath+"/"+"settings.json";
         
         if (File.Exists(applicationSettingsPatch))
         {
-            var jsonKeySettings = JsonUtility.FromJson<KeySettings>(applicationSettingsPatch);
+            var jsonKeySettings = JsonUtility.FromJson<GameSettingsObject>(applicationSettingsPatch);
             
             return jsonKeySettings;
         }
@@ -97,9 +101,9 @@ public class Settings : MonoBehaviour
         SelectedSettings = _keySettingsBuffer;
     }
 
-    public void SetKeyKods(KeySettings keySettings)
+    public void SetKeyKods(GameSettingsObject keySettings)
     {
-        _keySettingsBuffer = new KeySettings()
+        _keySettingsBuffer = new GameSettingsObject()
         {
             JumpKeyCode = SelectedSettings.JumpKeyCode, 
             BackKeyCode = SelectedSettings.BackKeyCode,
@@ -148,6 +152,43 @@ public class Settings : MonoBehaviour
     public void GetPresKeyKod(int id)
     {
         StartCoroutine(GetPressKey(id));
+
+    }
+    
+    private IEnumerator SelectOptions(int id,int optionsId)
+    {
+        PresKeySelect = true;
+        keyTexts[id].text = "--";
+        while (PresKeySelect==true)
+        {
+           
+            yield return new WaitForSeconds(0.1f);
+            
+        }
+        keyTexts[id].text = SelectedKey.ToString().ToUpper();
+        Debug.Log(SelectedKey.ToString());
+        
+        
+        switch (id)
+        {
+            case (int)EKodCods.InteractionKeyCode:
+            {
+                _keySettingsBuffer.InteractionKeyCode = SelectedKey;
+                break;
+            }
+            case (int)EKodCods.BeforeKeyCode:
+            {
+                _keySettingsBuffer.BeforeKeyCode = SelectedKey;
+                break;
+            }
+            case (int)EKodCods.BackKeyCode:
+            {
+                _keySettingsBuffer.BackKeyCode = SelectedKey;
+                break;
+            }
+                
+
+        }
 
     }
 
