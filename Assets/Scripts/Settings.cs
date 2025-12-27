@@ -9,8 +9,14 @@ using UnityEngine.UI;
 public class Settings : MonoBehaviour
 {
     
-    public List<string> vSyncOptionSelectors;
-    
+    public List<string> vSyncOptionSelector;
+
+    enum EOptionSelectors
+    {
+        VSync,
+        DynamicLighting
+    }
+
     public class GameSettingsObject
     {
         public KeyCode JumpKeyCode;
@@ -32,6 +38,8 @@ public class Settings : MonoBehaviour
         public KeyCode TaskBoxHid;
 
         public int vSync = 0;
+
+    
     }
 
     public List<Text> keyTexts = new List<Text>();
@@ -75,10 +83,13 @@ public class Settings : MonoBehaviour
     public GameSettingsObject ReadSettings()
     {
         string applicationSettingsPatch = Application.persistentDataPath+"/"+"settings.json";
-        
+
+        Debug.Log(applicationSettingsPatch);
         if (File.Exists(applicationSettingsPatch))
         {
-            var jsonKeySettings = JsonUtility.FromJson<GameSettingsObject>(applicationSettingsPatch);
+            var json = File.ReadAllText(applicationSettingsPatch);
+
+            var jsonKeySettings = JsonUtility.FromJson<GameSettingsObject>(json);
             
             return jsonKeySettings;
         }
@@ -98,6 +109,9 @@ public class Settings : MonoBehaviour
     public void SaveSettings()
     {
         SaveSettings(_keySettingsBuffer);
+        
+        InitNonKeySettings(_keySettingsBuffer);
+        
         SelectedSettings = _keySettingsBuffer;
     }
 
@@ -112,7 +126,8 @@ public class Settings : MonoBehaviour
             LeftKeyCode = SelectedSettings.LeftKeyCode,
             RightKeyCode = SelectedSettings.RightKeyCode,
             BeforeKeyCode = SelectedSettings.BackKeyCode,
-            SprintKeyCode = SelectedSettings.SprintKeyCode
+            SprintKeyCode = SelectedSettings.SprintKeyCode,
+            vSync = SelectedSettings.vSync
             
         };
         
@@ -135,7 +150,11 @@ public class Settings : MonoBehaviour
                     keyTexts[i].text = keySettings.BackKeyCode.ToString().ToUpper();
                     break;
                 }
-                
+                case (int)3:
+                {
+                    keyTexts[i].text =vSyncOptionSelector[SelectedSettings.vSync] ;
+                    break;
+                }
 
             }
         }
@@ -147,6 +166,14 @@ public class Settings : MonoBehaviour
     void Start()
     {
         SelectedSettings = ReadSettings();
+        
+        InitNonKeySettings(SelectedSettings);
+    }
+
+    private void InitNonKeySettings(GameSettingsObject settings)
+    {
+        QualitySettings.vSyncCount = settings.vSync;
+
     }
 
     public void GetPresKeyKod(int id)
@@ -154,42 +181,40 @@ public class Settings : MonoBehaviour
         StartCoroutine(GetPressKey(id));
 
     }
-    
-    private IEnumerator SelectOptions(int id,int optionsId)
+    public void SelectOptionsVSync(int id)
     {
-        PresKeySelect = true;
-        keyTexts[id].text = "--";
-        while (PresKeySelect==true)
+        var optionsId = (int)EOptionSelectors.VSync;
+        SelectOptions(id,optionsId);
+
+    }
+    
+    private void SelectOptions(int id,int optionsId)
+    {
+        if (optionsId==(int)EOptionSelectors.VSync)
         {
-           
-            yield return new WaitForSeconds(0.1f);
+            int IdSelected = 0;
             
-        }
-        keyTexts[id].text = SelectedKey.ToString().ToUpper();
-        Debug.Log(SelectedKey.ToString());
-        
-        
-        switch (id)
-        {
-            case (int)EKodCods.InteractionKeyCode:
+            for (int i = 0; i < vSyncOptionSelector.Count; i++)
             {
-                _keySettingsBuffer.InteractionKeyCode = SelectedKey;
-                break;
+                if ( keyTexts[id].text==vSyncOptionSelector[i])
+                {
+                    IdSelected = i;
+                }
+               
             }
-            case (int)EKodCods.BeforeKeyCode:
-            {
-                _keySettingsBuffer.BeforeKeyCode = SelectedKey;
-                break;
-            }
-            case (int)EKodCods.BackKeyCode:
-            {
-                _keySettingsBuffer.BackKeyCode = SelectedKey;
-                break;
-            }
-                
 
-        }
+            var nextId = IdSelected + 1;
+            
+            if (nextId==vSyncOptionSelector.Count)
+            {
+                nextId = 0;
+            }
+            keyTexts[id].text = vSyncOptionSelector[nextId];
 
+            Debug.Log(nextId);
+            _keySettingsBuffer.vSync = nextId;
+        }
+        
     }
 
     

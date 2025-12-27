@@ -33305,10 +33305,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1737381c59205bfb59721b5d10b4d1db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vSyncOptionSelectors:
+  vSyncOptionSelector:
   - OFF
-  - 30
-  - 60
+  - 1:1
+  - 1:2
   keyTexts:
   - {fileID: 565868967}
   - {fileID: 1819032321}
@@ -50120,7 +50120,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 600872114}
         m_TargetAssemblyTypeName: Settings, Assembly-CSharp
-        m_MethodName: GetPresKeyKod
+        m_MethodName: SelectOptionsVSync
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -57456,7 +57456,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1091303925
 Transform:
   m_ObjectHideFlags: 0
@@ -67226,7 +67226,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: F
+  m_Text: OFF
 --- !u!222 &1226685195
 CanvasRenderer:
   m_ObjectHideFlags: 0
