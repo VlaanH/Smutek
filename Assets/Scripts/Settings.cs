@@ -2,20 +2,22 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 
 public class Settings : MonoBehaviour
 {
+
+    public List<Light> AllLightsObjectse = new List<Light>();
     
     public List<string> vSyncOptionSelector;
+    
+    public List<string> dynamicLightingOptionSelector;
 
-    enum EOptionSelectors
-    {
-        VSync,
-        DynamicLighting
-    }
+    
 
     public class GameSettingsObject
     {
@@ -39,7 +41,7 @@ public class Settings : MonoBehaviour
 
         public int vSync = 0;
 
-    
+        public int DynamicLighting = 1;
     }
 
     public List<Text> keyTexts = new List<Text>();
@@ -127,7 +129,8 @@ public class Settings : MonoBehaviour
             RightKeyCode = SelectedSettings.RightKeyCode,
             BeforeKeyCode = SelectedSettings.BackKeyCode,
             SprintKeyCode = SelectedSettings.SprintKeyCode,
-            vSync = SelectedSettings.vSync
+            vSync = SelectedSettings.vSync,
+            DynamicLighting = SelectedSettings.DynamicLighting
             
         };
         
@@ -155,7 +158,11 @@ public class Settings : MonoBehaviour
                     keyTexts[i].text =vSyncOptionSelector[SelectedSettings.vSync] ;
                     break;
                 }
-
+                case (int)4:
+                {
+                    keyTexts[i].text =dynamicLightingOptionSelector[SelectedSettings.DynamicLighting] ;
+                    break;
+                }
             }
         }
        
@@ -169,11 +176,70 @@ public class Settings : MonoBehaviour
         
         InitNonKeySettings(SelectedSettings);
     }
+    
+
+    private Dictionary<Light, (LightShadows shadows, float intensity)> _originalLightSettings;
+    private Light[] AllLightsObjects;
+
 
     private void InitNonKeySettings(GameSettingsObject settings)
     {
         QualitySettings.vSyncCount = settings.vSync;
 
+        int sceneIndex = SceneManager.GetActiveScene().buildIndex;
+
+        if (sceneIndex == 0) return; // Пропускаем главное меню
+        
+        ApplyLightingSettings(settings.DynamicLighting);
+      
+    }
+
+    private void ApplyLightingSettings(int dynamicLighting)
+    {
+        // Получаем все источники света в сцене
+        AllLightsObjects = Resources.FindObjectsOfTypeAll<Light>()
+            .Where(light => light.gameObject.scene.IsValid())
+            .ToArray();
+
+        Debug.Log($"Found {AllLightsObjects.Length} lights in scene " + dynamicLighting.ToString());
+
+        if (dynamicLighting == 1)
+        {
+            // Сохраняем оригинальные настройки при первом переключении
+            if (_originalLightSettings == null)
+            {
+                _originalLightSettings = new Dictionary<Light, (LightShadows, float)>();
+            }
+
+            // Отключаем тени
+            foreach (var light in AllLightsObjects)
+            {
+                // Сохраняем только если ещё не сохранили
+                if (!_originalLightSettings.ContainsKey(light))
+                {
+                    _originalLightSettings[light] = (light.shadows, light.intensity);
+                
+                }
+
+                light.shadows = LightShadows.None;
+            }
+
+            Debug.Log("DynamicLighting OFF - Shadows disabled");
+        }
+        else if (dynamicLighting == 0)
+        {
+            // Восстанавливаем динамическое освещение с тенями
+            foreach (var light in AllLightsObjects)
+            {
+                if (_originalLightSettings != null && _originalLightSettings.ContainsKey(light))
+                {
+                    light.shadows = _originalLightSettings[light].shadows;
+                    light.intensity = _originalLightSettings[light].intensity;
+                }
+            }
+
+            Debug.Log("DynamicLighting ON - Shadows enabled");
+        }
     }
 
     public void GetPresKeyKod(int id)
@@ -183,38 +249,39 @@ public class Settings : MonoBehaviour
     }
     public void SelectOptionsVSync(int id)
     {
-        var optionsId = (int)EOptionSelectors.VSync;
-        SelectOptions(id,optionsId);
-
+        _keySettingsBuffer.vSync = SelectOptions(id,vSyncOptionSelector);
     }
     
-    private void SelectOptions(int id,int optionsId)
+    public void SelectOptionsVSyncDynamicLighting(int id)
     {
-        if (optionsId==(int)EOptionSelectors.VSync)
+        _keySettingsBuffer.DynamicLighting = SelectOptions(id,dynamicLightingOptionSelector);
+    }
+    
+    private int SelectOptions(int id,List<string> optionSelector)
+    {
+       
+        int IdSelected = 0;
+            
+        for (int i = 0; i < optionSelector.Count; i++)
         {
-            int IdSelected = 0;
-            
-            for (int i = 0; i < vSyncOptionSelector.Count; i++)
+            if ( keyTexts[id].text==optionSelector[i])
             {
-                if ( keyTexts[id].text==vSyncOptionSelector[i])
-                {
-                    IdSelected = i;
-                }
+                IdSelected = i;
+            }
                
-            }
-
-            var nextId = IdSelected + 1;
-            
-            if (nextId==vSyncOptionSelector.Count)
-            {
-                nextId = 0;
-            }
-            keyTexts[id].text = vSyncOptionSelector[nextId];
-
-            Debug.Log(nextId);
-            _keySettingsBuffer.vSync = nextId;
         }
+
+        var nextId = IdSelected + 1;
+            
+        if (nextId==optionSelector.Count)
+        {
+            nextId = 0;
+        }
+        keyTexts[id].text = optionSelector[nextId];
+
+        Debug.Log(nextId);
         
+        return nextId;
     }
 
     
