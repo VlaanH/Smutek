@@ -41,7 +41,7 @@ public class Settings : MonoBehaviour
 
         public int vSync = 0;
 
-        public int DynamicLighting = 1;
+        public int DynamicLighting = 0;
     }
 
     public List<Text> keyTexts = new List<Text>();
@@ -63,7 +63,7 @@ public class Settings : MonoBehaviour
         
         LeftKeyCode = KeyCode.A,
         
-        RightKeyCode = KeyCode.R,
+        RightKeyCode = KeyCode.D,
         
         SprintKeyCode = KeyCode.LeftShift,
         
@@ -127,8 +127,9 @@ public class Settings : MonoBehaviour
             InteractionKeyCode = SelectedSettings.InteractionKeyCode,
             LeftKeyCode = SelectedSettings.LeftKeyCode,
             RightKeyCode = SelectedSettings.RightKeyCode,
-            BeforeKeyCode = SelectedSettings.BackKeyCode,
+            BeforeKeyCode = SelectedSettings.BeforeKeyCode,
             SprintKeyCode = SelectedSettings.SprintKeyCode,
+            TaskBoxHid =  SelectedSettings.TaskBoxHid,
             vSync = SelectedSettings.vSync,
             DynamicLighting = SelectedSettings.DynamicLighting
             
@@ -153,14 +154,14 @@ public class Settings : MonoBehaviour
                     keyTexts[i].text = keySettings.BackKeyCode.ToString().ToUpper();
                     break;
                 }
-                case (int)3:
+                case 3:
                 {
-                    keyTexts[i].text =vSyncOptionSelector[SelectedSettings.vSync] ;
+                    keyTexts[i].text = vSyncOptionSelector[SelectedSettings.vSync];
                     break;
                 }
-                case (int)4:
+                case 4:
                 {
-                    keyTexts[i].text =dynamicLightingOptionSelector[SelectedSettings.DynamicLighting] ;
+                    keyTexts[i].text = dynamicLightingOptionSelector[SelectedSettings.DynamicLighting];
                     break;
                 }
             }
@@ -179,8 +180,7 @@ public class Settings : MonoBehaviour
     
 
     private Dictionary<Light, (LightShadows shadows, float intensity)> _originalLightSettings;
-    private Light[] AllLightsObjects;
-
+    private int _currentLightingState = -1;
 
     private void InitNonKeySettings(GameSettingsObject settings)
     {
@@ -188,58 +188,99 @@ public class Settings : MonoBehaviour
 
         int sceneIndex = SceneManager.GetActiveScene().buildIndex;
 
-        if (sceneIndex == 0) return; // Пропускаем главное меню
+        if (sceneIndex == 0) return;
         
         ApplyLightingSettings(settings.DynamicLighting);
-      
     }
 
     private void ApplyLightingSettings(int dynamicLighting)
     {
-        // Получаем все источники света в сцене
-        AllLightsObjects = Resources.FindObjectsOfTypeAll<Light>()
-            .Where(light => light.gameObject.scene.IsValid())
-            .ToArray();
+        Light[] allLightsObjects = FindObjectsOfType<Light>(true);
 
-        Debug.Log($"Found {AllLightsObjects.Length} lights in scene " + dynamicLighting.ToString());
-
-        if (dynamicLighting == 1)
+        Debug.Log($"Found {allLightsObjects.Length} lights in scene, setting: {dynamicLighting}");
+        
+        if (_originalLightSettings == null)
         {
-            // Сохраняем оригинальные настройки при первом переключении
-            if (_originalLightSettings == null)
-            {
-                _originalLightSettings = new Dictionary<Light, (LightShadows, float)>();
-            }
+            _originalLightSettings = new Dictionary<Light, (LightShadows, float)>();
+        }
+        
+        var keysToRemove = _originalLightSettings.Keys.Where(light => light == null).ToList();
+        foreach (var key in keysToRemove)
+        {
+            _originalLightSettings.Remove(key);
+        }
 
-            // Отключаем тени
-            foreach (var light in AllLightsObjects)
+        if (dynamicLighting == 1) // Тени ВЫКЛЮЧЕНЫ
+        {
+            foreach (var light in allLightsObjects)
             {
-                // Сохраняем только если ещё не сохранили
+                if (light == null) continue;
+                if (light.name == "Sun") continue;
+                
+                // Сохраняем оригинальные настройки только если их еще нет
                 if (!_originalLightSettings.ContainsKey(light))
                 {
                     _originalLightSettings[light] = (light.shadows, light.intensity);
-                
                 }
 
                 light.shadows = LightShadows.None;
             }
 
-            Debug.Log("DynamicLighting OFF - Shadows disabled");
+            Debug.Log("Dynamic Lighting OFF - Shadows disabled");
         }
-        else if (dynamicLighting == 0)
+        else if (dynamicLighting == 0) // Тени ВКЛЮЧЕНЫ
         {
-            // Восстанавливаем динамическое освещение с тенями
-            foreach (var light in AllLightsObjects)
+            foreach (var light in allLightsObjects)
             {
-                if (_originalLightSettings != null && _originalLightSettings.ContainsKey(light))
+                if (light == null) continue;
+                if (light.name == "Sun") continue;
+                
+                // Восстанавливаем оригинальные настройки
+                if (_originalLightSettings.ContainsKey(light))
                 {
-                    light.shadows = _originalLightSettings[light].shadows;
-                    light.intensity = _originalLightSettings[light].intensity;
+                    var original = _originalLightSettings[light];
+                    light.shadows = original.shadows;
+                    light.intensity = original.intensity;
+                }
+                // Если это новый источник света, сохраняем его текущие параметры
+                else
+                {
+                    _originalLightSettings[light] = (light.shadows, light.intensity);
                 }
             }
 
-            Debug.Log("DynamicLighting ON - Shadows enabled");
+            Debug.Log("Dynamic Lighting ON - Shadows enabled");
         }
+
+        _currentLightingState = dynamicLighting;
+    }
+
+    private void OnSceneUnloaded(Scene scene)
+    {
+        CleanupLightSettings();
+    }
+
+    private void CleanupLightSettings()
+    {
+        if (_originalLightSettings == null) return;
+        
+        var keysToRemove = _originalLightSettings.Keys.Where(light => light == null).ToList();
+        foreach (var key in keysToRemove)
+        {
+            _originalLightSettings.Remove(key);
+        }
+
+        Debug.Log($"Cleaned up {keysToRemove.Count} destroyed lights from dictionary");
+    }
+
+    private void OnEnable()
+    {
+        SceneManager.sceneUnloaded += OnSceneUnloaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneUnloaded -= OnSceneUnloaded;
     }
 
     public void GetPresKeyKod(int id)
