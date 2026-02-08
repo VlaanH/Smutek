@@ -18,7 +18,7 @@ Blending **exploration**, **interactive storytelling**, and **quiet philosophy**
 
 1. Download the latest build for your platform:
 
-   * [⬇ Linux](https://github.com/VlaanH/Smutek/releases/download/Release_0.2/LInux64.tar)
+   * [⬇ Linux](https://github.com/VlaanH/Smutek/releases/download/Release_0.2/LInux64.tar.gz)
    * [⬇ Windows](https://github.com/VlaanH/Smutek/releases/download/Release_0.2/WIN64.zip)
 
 2. Unpack the archive.
