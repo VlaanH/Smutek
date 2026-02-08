@@ -2,8 +2,8 @@
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
-[![Download for Linux](https://img.shields.io/badge/⬇%20Download-Linux-2ea44f?style=for-the-badge\&logo=linux)](https://github.com/VlaanH/Smutek/releases/download/release/LInux64.tar)
-[![Download for Windows](https://img.shields.io/badge/⬇%20Download-Windows-0078D6?style=for-the-badge\&logo=windows)](https://github.com/VlaanH/Smutek/releases/download/release/WIN64.zip)
+[![Download for Linux](https://img.shields.io/badge/⬇%20Download-Linux-2ea44f?style=for-the-badge\&logo=linux)](https://github.com/VlaanH/Smutek/releases/download/Release_0.2/LInux64.tar.gz)
+[![Download for Windows](https://img.shields.io/badge/⬇%20Download-Windows-0078D6?style=for-the-badge\&logo=windows)](https://github.com/VlaanH/Smutek/releases/download/Release_0.2/WIN64.zip)
 
 ## 📖 About the Project
 
@@ -18,8 +18,8 @@ Blending **exploration**, **interactive storytelling**, and **quiet philosophy**
 
 1. Download the latest build for your platform:
 
-   * [⬇ Linux](https://github.com/VlaanH/Smutek/releases/download/release/LInux64.tar)
-   * [⬇ Windows](https://github.com/VlaanH/Smutek/releases/download/release/WIN64.zip)
+   * [⬇ Linux](https://github.com/VlaanH/Smutek/releases/download/Release_0.2/LInux64.tar)
+   * [⬇ Windows](https://github.com/VlaanH/Smutek/releases/download/Release_0.2/WIN64.zip)
 
 2. Unpack the archive.
 
