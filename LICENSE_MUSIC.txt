@@ -1,14 +1,6 @@
-SMUTEK — Music
+SMUTEK â€” Music
 
+Music in this project was generated using Suno AI (Free Plan).
 
-The music used in this project was created using Suno AI (Free Plan).
-
-
-Terms of use:
-- The music is for non-commercial use only within the SMUTEK project.
-- Any use outside of this project is prohibited.
-- Commercial use requires a proper Suno AI license.
-
-
-Date: 2025
-Author: VlanH
+All rights and usage terms are governed by Suno AI Terms of Service:
+https://suno.com/terms
